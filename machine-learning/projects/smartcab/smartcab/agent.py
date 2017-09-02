@@ -118,6 +118,17 @@ class LearningAgent(Agent):
         # Be sure that when choosing an action with highest Q-value that you randomly select between actions that "tie".
 	if(self.learning == False):
 		action = random.choice(self.valid_actions)
+	else:
+		prob = random.random()
+		if(prob <= self.epsilon):
+			action = random.choice(self.valid_actions)
+		else:
+			max = get_maxQ(self, state)
+			choices = []
+			for action in self.Q[state]:
+				if(self.Q[state][action] == max):
+					choices.append(action)
+			action = random.choice(choices)
         return action
 
 
