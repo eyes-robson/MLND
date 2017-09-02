@@ -150,6 +150,7 @@ class LearningAgent(Agent):
         action = self.choose_action(state)  # Choose an action
         reward = self.env.act(self, action) # Receive a reward
         self.learn(state, action, reward)   # Q-learn
+	self.epsilon = self.epsilon * math.exp(-self.alpha) # (MANUAL) add a decay function for epsilon
 
         return
         
