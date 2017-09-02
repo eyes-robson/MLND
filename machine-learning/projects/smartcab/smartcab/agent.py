@@ -100,7 +100,7 @@ class LearningAgent(Agent):
 		else:
 			self.Q[state] = {}
 			for key in self.valid_actions:
-				self.Q[state][{key: 0.0}]
+				self.Q[state][key] = 0.0
         return
 
 
