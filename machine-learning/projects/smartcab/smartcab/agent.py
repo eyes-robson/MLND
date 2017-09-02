@@ -39,6 +39,7 @@ class LearningAgent(Agent):
         # Update epsilon using a decay function of your choice
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
+	self.epsilon = self.epsilon * math.exp(-self.alpha) # (MANUAL) add a decay function for epsilon
 
         return None
 
@@ -160,8 +161,7 @@ class LearningAgent(Agent):
         self.createQ(state)                 # Create 'state' in Q-table
         action = self.choose_action(state)  # Choose an action
         reward = self.env.act(self, action) # Receive a reward
-        self.learn(state, action, reward)   # Q-learn
-	self.epsilon = self.epsilon * math.exp(-self.alpha) # (MANUAL) add a decay function for epsilon
+        self.learn(state, action, reward)   # Q-learning
 
         return
         
